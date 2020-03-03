@@ -4,15 +4,18 @@ import CommentInput from "./CommentInput";
 import Comment from "./Comment";
 import "./Comment.css";
 
+
 const CommentSection = props => {
   // Add state for the comments
+  const [comments] = useState(props.comments)
 
   return (
     <div>
-      {/* map through the comments data and return the Comment component */}
-      <CommentInput />
+    <CommentInput />
+    {comments.map((elem,i) => {
+      return <Comment key = {i} comment = {elem} />
+    })}
     </div>
   );
 };
-
 export default CommentSection;
