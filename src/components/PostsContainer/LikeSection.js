@@ -3,12 +3,14 @@
 // HINT: You will need to add an onClick event pass through your props and update the hard coded Likes
 import React, { useState } from "react";
 
+
 import "./Posts.css"
 
 const LikeSection = props => {
   // eslint-disable-next-line
   const [color, setColor] = useState(document.getElementsByClassName('far fa-heart'))
-  let heart = document.getElementsByClassName('far fa-heart')
+  const [like,setLike]= useState(props.likes)
+
   return (
     <div>
     <div
@@ -17,14 +19,14 @@ const LikeSection = props => {
     >
       <div className="like-section-wrapper">
         <i className="far fa-heart" />
-        <i onMouseDown = {() => props.updateLikes(props.likes+1)} onMouseUp = {() => setColor(heart.classList.add('red'))} className="far fa-heart" />
-      </div>
-      <div className="like-section-wrapper">
-        <i className="far fa-comment" />
+        <button onClick = {()=>{ 
+          console.log(like)
+          setLike(like+ 1);
+        }}>like</button>
       </div>
     </div>
     <p className="like-number">
-      {props.likes} <strong>likes</strong>
+    {like} <strong>likes</strong>
     </p>
 </div>
   )
